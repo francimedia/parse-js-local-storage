@@ -1,6 +1,8 @@
-Parse + Local Storage 
+Parse JavaScript Client + Local Storage 
 ========================
 Use HTML5 Local Storage Engine to cache/queue Parse Objects and send them to Parse servers later.
+
+Parse Docs: https://www.parse.com/docs/js_guide
 
 ##Example usages
 
