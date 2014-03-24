@@ -1,0 +1,88 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+  <script type="text/javascript" src="./js/parse.localstorage.js"></script>
+  
+</head>
+
+<body>
+
+
+  <div id="main">
+    <h1>Parse Local Storage Libary (Work in progress)</h1>
+
+    <p><strong>What you can do:</strong></p>
+
+    <ol>
+      <li>Add an object to a local storage based queue (HTML5 storage).</a></li>
+      <li>Send the queue to the Parse servers.</li>
+    </ol>
+ 
+    <div class="success">
+      <p>Example Usage:</p>      
+        <code>
+          var TestObject = Parse.Object.extend("TestObject");<br/>
+          var testObject = new TestObject();<br/>
+          testObject.save({foo: "bar"});<br/>
+          Parse.LocalStorage.save("TestObject", testObject);
+        </code>
+    </div>
+
+    <div class="success">
+      <p>Send Queue to Parse Server:</p>      
+        <code>
+          Parse.LocalStorage.sendQueue();
+        </code>
+    </div>
+
+    <div class="success">
+      <p>Clear Queue:</p>      
+        <code>
+          Parse.LocalStorage.clearQueue();
+        </code>
+    </div>
+
+  </div>
+
+
+  <div id="main">
+    <h1></h1>
+    <button onclick="addExampleObject()">Add Example Object to Queue</button>
+    <button onclick="Parse.LocalStorage.sendQueue()">Save Queue to Parse</button>
+  </div>
+
+  <script type="text/javascript">
+
+    Parse.initialize("app_id", "app_key");
+
+    function addExampleObject () {
+
+        var TestObject = Parse.Object.extend("TestObject");
+        var testObject = new TestObject();
+
+        // Example Value
+        testObject.set('foo', "bar"); 
+
+        // set a unique hash (optional)
+        testObject.set('hash', "myUniqueHash");
+
+        // save test object to queue 
+        Parse.LocalStorage.save("TestObject", testObject);
+
+    }
+    
+    // send queue to server
+    // Parse.LocalStorage.sendQueue();
+
+  </script>
+</body>
+
+</html>
