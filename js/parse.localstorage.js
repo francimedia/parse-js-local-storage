@@ -33,7 +33,12 @@ Parse.LocalStorage = {
     },
     getQueue: function () {
         var queueData = eval(localStorage.getItem(this.localStorageKey));
-        return typeof queueData == 'object' ? queueData : [];
+        if(queueData === null){
+            queueData = [];
+            return queueData;
+        } else {
+            return queueData;
+        }
     },
     setQueue: function (queueData) {
         localStorage.setItem(this.localStorageKey, JSON.stringify(queueData));
